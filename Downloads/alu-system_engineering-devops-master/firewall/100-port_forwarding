@@ -1,0 +1,9 @@
+#forwarding tcp traffic
+# NAT table rules
+*nat
+:PREROUTING ACCEPT [0:0]
+
+# Forward TCP traffic from 8080 to 80
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+
+COMMIT
